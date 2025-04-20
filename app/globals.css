@@ -1,0 +1,305 @@
+/* Self-hosted fonts as fallback */
+@font-face {
+  font-family: "Inter";
+  src: url("/fonts/Inter-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("/fonts/Inter-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("/fonts/Inter-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("/fonts/Inter-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("/fonts/Montserrat-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("/fonts/Montserrat-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("/fonts/Montserrat-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("/fonts/Montserrat-ExtraBold.woff2") format("woff2");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 33% 98%;
+    --foreground: 222 47% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    --primary: 217 91% 60%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+  }
+
+  .dark {
+    --background: 222 47% 11%;
+    --foreground: 210 40% 98%;
+
+    --card: 222 47% 14%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 47% 14%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 217 91% 60%;
+    --primary-foreground: 222 47% 11%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-heading;
+  }
+}
+
+/* Font family utilities */
+.font-sans {
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.font-heading {
+  font-family: "Montserrat", "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* AI Insights Styling */
+.ai-gradient-text {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-blue to-brand-green;
+}
+
+.ai-insight-card {
+  @apply relative overflow-hidden border border-brand-blue/20 bg-gradient-to-br from-background to-brand-blue/5;
+}
+
+.ai-insight-card::before {
+  content: "";
+  @apply absolute inset-0 bg-gradient-to-r from-brand-blue/10 to-brand-green/10 opacity-30 pointer-events-none;
+}
+
+.ai-glow {
+  @apply relative;
+}
+
+.ai-glow::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: 0.5rem;
+  background: linear-gradient(to right, var(--brand-blue), var(--brand-green));
+  opacity: 0.5;
+  filter: blur(4px);
+  animation: pulse-glow 2s ease-in-out infinite;
+  z-index: -1;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-brand-blue/30 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-brand-blue/50;
+}
+
+/* Admin Panel Enhancements */
+.admin-card {
+  @apply transition-all duration-200 hover:shadow-md;
+}
+
+.admin-stat-card {
+  @apply relative overflow-hidden;
+}
+
+.admin-stat-card::after {
+  content: "";
+  @apply absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-primary/50 to-primary;
+}
+
+.admin-grid {
+  @apply grid gap-6;
+}
+
+.admin-table {
+  @apply w-full text-sm;
+}
+
+.admin-table th {
+  @apply font-medium text-muted-foreground;
+}
+
+.admin-badge {
+  @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium;
+}
+
+/* Dashboard animations */
+@keyframes pulse-glow {
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Responsive improvements */
+@media (max-width: 640px) {
+  .admin-grid {
+    @apply grid-cols-1;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  .admin-grid {
+    @apply grid-cols-2;
+  }
+}
+
+@media (min-width: 1025px) {
+  .admin-grid {
+    @apply grid-cols-4;
+  }
+}
+
+
+/* CSS for the Card to maintain size */
+.explore-crypto-box {
+  max-width: 1350px; /* Adjust as per requirement */
+  width: 1250px;
+  margin: 0 auto; /* Center the box */
+}
+
+/* Add a size box to the content */
+.content-box {
+  height: 2300px; /* Fixed height for the content */
+  width: 1270px;
+  overflow-y: auto; /* Scroll if content overflows */
+  padding: 22px;
+}
+
+/* Optional: Make it responsive */
+@media (max-width: 1350px) {
+  .explore-crypto-box {
+    max-width: 1550px;
+    width: 1380px;
+  }
+  
+  .content-box {
+    height: 2000px;
+    width: 1380px; /* Adjust height for mobile */
+  }
+}
+
+
+.explore-crypto-box {
+  border: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+}
+
